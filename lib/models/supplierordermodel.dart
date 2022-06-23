@@ -1,9 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:intl/intl.dart';
 
-class CustumerOrderModel extends StatelessWidget {
+class SupplierOrderModel extends StatelessWidget {
   final dynamic order;
-  const CustumerOrderModel({Key? key, required this.order}) : super(key: key);
+  const SupplierOrderModel({Key? key, required this.order}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -103,13 +105,7 @@ class CustumerOrderModel extends StatelessWidget {
               //  height: 225,
               width: double.infinity,
               decoration: BoxDecoration(
-                  color: order['deliverystatus'] == 'delivered'
-                      ? Colors.green.withOpacity(0.2)
-                      : order['deliverystatus'] == 'shipping'
-                          ? Colors.orangeAccent.withOpacity(0.2)
-                          : order['deliverystatus'] == ''
-                              ? Colors.redAccent.withOpacity(0.2)
-                              : Colors.blueGrey.withOpacity(0.2),
+                  color: Colors.blueGrey.withOpacity(0.2),
                   borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(8),
                       bottomRight: Radius.circular(8))),
@@ -213,52 +209,65 @@ class CustumerOrderModel extends StatelessWidget {
                         ),
                       ],
                     ),
-                    order['deliverystatus'] == 'shipping' ||
-                            order['deliverystatus'] == '' ||
-                            order['deliverystatus'] == 'preparing'
-                        ? Row(
+                    Row(
+                      children: [
+                        Text(
+                          'Order Date : ',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontFamily: 'Caveat',
+                              fontSize: 18),
+                        ),
+                        Text(
+                          DateFormat('yyyy-MM-dd')
+                              .format(order['orderdate'].toDate())
+                              .toString(),
+                          style: TextStyle(
+                              fontFamily: 'Acme', color: Colors.green[900]),
+                        ),
+                      ],
+                    ),
+                    order['deliverystatus'] == 'delivered'
+                        ? Text('')
+                        : Row(
                             children: [
                               Text(
-                                'Estimated Delivery On  : ',
+                                'Change Delivery Status to:',
                                 style: TextStyle(
                                     fontWeight: FontWeight.w600,
                                     fontFamily: 'Caveat',
                                     fontSize: 18),
                               ),
-                              Text(
-                                DateFormat('yyyy-MM-dd')
-                                    .format(order['deliverydate'].toDate())
-                                    .toString(),
-                                style: TextStyle(
-                                    fontFamily: 'Acme',
-                                    color: Colors.green[900]),
-                              ),
+                              order['deliverystatus'] == 'preparing'
+                                  ? TextButton(
+                                      onPressed: () {
+                                        DatePicker.showDatePicker(context,
+                                            minTime: DateTime.now(),
+                                            maxTime: DateTime.now()
+                                                .add(const Duration(days: 365)),
+                                            onConfirm: (date) async {
+                                          await FirebaseFirestore.instance
+                                              .collection('orders')
+                                              .doc(order['orderid'])
+                                              .update({
+                                            'deliverystatus': 'shipping',
+                                            'deliverydate': date
+                                          });
+                                        });
+                                      },
+                                      child: Text('shipping?'))
+                                  : TextButton(
+                                      onPressed: () async {
+                                        await FirebaseFirestore.instance
+                                            .collection('orders')
+                                            .doc(order['orderid'])
+                                            .update({
+                                          'deliverystatus': 'delivered'
+                                        });
+                                      },
+                                      child: Text('delivered?'))
                             ],
-                          )
-                        : Text(''),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Row(
-                      children: [
-                        order['deliverystatus'] == 'delivered' &&
-                                order['orderreview'] == false
-                            ? TextButton(
-                                onPressed: () {}, child: Text('Write Review'))
-                            : Row(
-                                children: [
-                                  Icon(
-                                    Icons.check_circle,
-                                    color: Colors.blue[900],
-                                  ),
-                                  Text(
-                                    'Review Added',
-                                    style: TextStyle(color: Colors.blue[900]),
-                                  )
-                                ],
-                              )
-                      ],
-                    )
+                          ),
                   ],
                 ),
               ),

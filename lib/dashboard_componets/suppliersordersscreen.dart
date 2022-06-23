@@ -1,6 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:multi_store_app/dashboard_componets/supplierorderscomponents.dart/delivered.dart';
+import 'package:multi_store_app/dashboard_componets/supplierorderscomponents.dart/preparing.dart';
+import 'package:multi_store_app/dashboard_componets/supplierorderscomponents.dart/shipping.dart';
+import 'package:multi_store_app/main_screen/homescreen.dart';
 import 'package:multi_store_app/widgets/appbarwidgets.dart';
 
 class SuppliersOrdersScreen extends StatelessWidget {
@@ -8,12 +12,24 @@ class SuppliersOrdersScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.white,
-        title: AppBarTitle(title: 'Supplier Orders'),
-        leading: const AppBarBackButton(),
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: Colors.white,
+          title: AppBarTitle(title: 'Orders'),
+          leading: const AppBarBackButton(),
+          bottom: TabBar(
+             indicatorColor: Colors.blueGrey,
+              tabs: const [
+                RepeatedTab(label: 'Preparing'),
+                RepeatedTab(label: 'Shipping'),
+                RepeatedTab(label: 'Delivered')
+              ]),
+        ),
+        body:
+            TabBarView(children: const [Preparing(), Shipping(), Delivered()]),
       ),
     );
   }
