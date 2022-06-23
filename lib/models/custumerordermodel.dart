@@ -226,9 +226,9 @@ class CustumerOrderModel extends StatelessWidget {
                                     fontSize: 18),
                               ),
                               Text(
-                                DateFormat('yyyy-MM-dd')
-                                    .format(order['deliverydate'].toDate())
-                                    .toString(),
+                               DateFormat('yyyy-MM-dd')
+                              .format(order['orderdate'].toDate())
+                              .toString(),
                                 style: TextStyle(
                                     fontFamily: 'Acme',
                                     color: Colors.green[900]),

@@ -168,7 +168,7 @@ class StaticsButton2 extends StatelessWidget {
                           color: Colors.blueGrey,
                         ))),
                 Positioned(
-                    left: 130,
+                    left: 125,
                     top: 38,
                     child:
                         AnimatedCounter(count: value, decimal: 2, sign: ' ₹  '))

@@ -137,22 +137,43 @@ class _ProductScreenState extends State<ProductScreen> {
                   height: 20,
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 58.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 28.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Row(
                         children: [
                           Text(
-                            (' ₹  '),
-                            style:
-                                TextStyle(color: Colors.red[900], fontSize: 20),
+                            (' ₹     '),
+                            style: TextStyle(
+                                color: Colors.red[900],
+                                fontSize: 20,
+                                fontWeight: FontWeight.w600),
                           ),
-                          Text(
-                            widget.prolist['price'].toString(),
-                            style:
-                                TextStyle(color: Colors.red[900], fontSize: 20),
+                          Text(widget.prolist['price'].toString(),
+                              style: widget.prolist['discount'] != 0
+                                  ? TextStyle(
+                                      color: Colors.blueGrey,
+                                      fontSize: 18,
+                                      decoration: TextDecoration.lineThrough,
+                                      fontWeight: FontWeight.w600)
+                                  : TextStyle(
+                                      color: Colors.red[900],
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w600)),
+                          SizedBox(
+                            width: 15,
                           ),
+                          widget.prolist['discount'] != 0
+                              ? Text(
+                                  ((1 - (widget.prolist['discount'] / 100)) *
+                                          (widget.prolist['price']))
+                                      .toStringAsFixed(2),
+                                  style: TextStyle(
+                                      color: Colors.red[900],
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w600))
+                              : Text('')
                         ],
                       ),
                       IconButton(
@@ -169,7 +190,12 @@ class _ProductScreenState extends State<ProductScreen> {
                                   .removethis(widget.prolist['productid'])
                               : context.read<WishList>().addWishlistItem(
                                   widget.prolist['productname'],
-                                  widget.prolist['price'],
+                                  widget.prolist['discount'] != 0
+                                      ? ((1 -
+                                              (widget.prolist['discount'] /
+                                                  100)) *
+                                          (widget.prolist['price']))
+                                      : widget.prolist['price'],
                                   1,
                                   widget.prolist['instock'],
                                   widget.prolist['productimages'],
@@ -420,7 +446,10 @@ class _ProductScreenState extends State<ProductScreen> {
                       } else {
                         context.read<Cart>().addItem(
                             widget.prolist['productname'],
-                            widget.prolist['price'],
+                            widget.prolist['discount'] != 0
+                                ? ((1 - (widget.prolist['discount'] / 100)) *
+                                    (widget.prolist['price']))
+                                : widget.prolist['price'],
                             1,
                             widget.prolist['instock'],
                             widget.prolist['productimages'],
