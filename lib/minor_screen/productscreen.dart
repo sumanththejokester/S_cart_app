@@ -1,5 +1,6 @@
 import 'package:badges/badges.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 import 'package:multi_store_app/main_screen/cartscreen.dart';
@@ -35,6 +36,11 @@ class _ProductScreenState extends State<ProductScreen> {
         .collection('products')
         .where('maincateg', isEqualTo: widget.prolist['maincateg'])
         .where('subcateg', isEqualTo: widget.prolist['subcateg'])
+        .snapshots();
+    final Stream<QuerySnapshot> reviewsStream = FirebaseFirestore.instance
+        .collection('products')
+        .doc(widget.prolist['productid'])
+        .collection('reviews')
         .snapshots();
     return ScaffoldMessenger(
       key: _scaffoldKey,
@@ -152,7 +158,7 @@ class _ProductScreenState extends State<ProductScreen> {
                           ),
                           Text(widget.prolist['price'].toString(),
                               style: widget.prolist['discount'] != 0
-                                  ? TextStyle(
+                                  ? const TextStyle(
                                       color: Colors.blueGrey,
                                       fontSize: 18,
                                       decoration: TextDecoration.lineThrough,
@@ -161,7 +167,7 @@ class _ProductScreenState extends State<ProductScreen> {
                                       color: Colors.red[900],
                                       fontSize: 20,
                                       fontWeight: FontWeight.w600)),
-                          SizedBox(
+                          const SizedBox(
                             width: 15,
                           ),
                           widget.prolist['discount'] != 0
@@ -173,7 +179,7 @@ class _ProductScreenState extends State<ProductScreen> {
                                       color: Colors.red[900],
                                       fontSize: 20,
                                       fontWeight: FontWeight.w600))
-                              : Text('')
+                              : const Text('')
                         ],
                       ),
                       IconButton(
@@ -209,8 +215,8 @@ class _ProductScreenState extends State<ProductScreen> {
                                         product.documentId ==
                                         widget.prolist['productid']) !=
                                 null
-                            ? Icon(Icons.favorite)
-                            : Icon(Icons.favorite_border_outlined),
+                            ? const Icon(Icons.favorite)
+                            : const Icon(Icons.favorite_border_outlined),
                         color: Colors.redAccent,
                       )
                     ],
@@ -225,7 +231,7 @@ class _ProductScreenState extends State<ProductScreen> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       widget.prolist['instock'] == 0
-                          ? Text(
+                          ? const Text(
                               'Out of Stock',
                               style: TextStyle(
                                   color: Color.fromARGB(255, 239, 101, 55),
@@ -259,8 +265,10 @@ class _ProductScreenState extends State<ProductScreen> {
                         ),
                         Text(
                           ('Product Description'),
-                          style:
-                              TextStyle(color: Colors.blueGrey, fontSize: 20),
+                          style: TextStyle(
+                              color: Colors.blueGrey,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600),
                         ),
                         SizedBox(
                           height: 40,
@@ -293,6 +301,7 @@ class _ProductScreenState extends State<ProductScreen> {
                 const SizedBox(
                   height: 40,
                 ),
+                reviews(reviewsStream),
                 SizedBox(
                     height: 40,
                     child: Column(
@@ -312,7 +321,9 @@ class _ProductScreenState extends State<ProductScreen> {
                             Text(
                               ('Recommended Products'),
                               style: TextStyle(
-                                  color: Colors.blueGrey, fontSize: 20),
+                                  color: Colors.blueGrey,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w600),
                             ),
                             SizedBox(
                               height: 40,
@@ -413,7 +424,8 @@ class _ProductScreenState extends State<ProductScreen> {
                                 ? false
                                 : true,
                             animationType: BadgeAnimationType.slide,
-                            badgeColor: Color.fromARGB(255, 152, 189, 205),
+                            badgeColor:
+                                const Color.fromARGB(255, 152, 189, 205),
                             badgeContent: Text(
                               context.watch<Cart>().getItems.length.toString(),
                               style: TextStyle(
@@ -465,4 +477,106 @@ class _ProductScreenState extends State<ProductScreen> {
       ),
     );
   }
+}
+
+Widget reviews(var reviewsStream) {
+  return ExpandablePanel(
+      header: const Padding(
+        padding: EdgeInsets.all(8.0),
+        child: Text(
+          'Reviews',
+          style: TextStyle(
+              color: Colors.blueGrey,
+              fontSize: 18,
+              fontWeight: FontWeight.w600),
+        ),
+      ),
+      collapsed: SizedBox(
+        height: 150,
+        child: allreviews(reviewsStream),
+      ),
+      expanded: allreviews(reviewsStream));
+}
+
+Widget allreviews(var reviewsStream) {
+  return StreamBuilder<QuerySnapshot>(
+    stream: reviewsStream,
+    builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot2) {
+      if (snapshot2.connectionState == ConnectionState.waiting) {
+        return const Center(child: CircularProgressIndicator());
+      }
+      if (snapshot2.data!.docs.isEmpty) {
+        return const Center(
+            child: Text(
+          'This Product has no Reviews',
+          style: TextStyle(
+              color: Colors.blueGrey,
+              fontSize: 18,
+              fontWeight: FontWeight.w600,
+              fontFamily: 'Acme',
+              letterSpacing: 1.5),
+        ));
+      }
+
+      return ListView.builder(
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          itemCount: snapshot2.data!.docs.length,
+          itemBuilder: (context, index) {
+            return ListTile(
+              leading: CircleAvatar(
+                backgroundImage:
+                    NetworkImage(snapshot2.data!.docs[index]['profileimage']),
+              ),
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(snapshot2.data!.docs[index]['name']),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Text(
+                            snapshot2.data!.docs[index]['rate'].toString()),
+                      ),
+                      (snapshot2.data!.docs[index]['rate'] < 1.5)
+                          ? const Icon(
+                              Icons.sentiment_very_dissatisfied,
+                              color: Colors.red,
+                            )
+                          : ((snapshot2.data!.docs[index]['rate'] > 1) &&
+                                  (snapshot2.data!.docs[index]['rate'] < 2.5))
+                              ? const Icon(
+                                  Icons.sentiment_dissatisfied,
+                                  color: Colors.redAccent,
+                                )
+                              : ((snapshot2.data!.docs[index]['rate'] > 2) &&
+                                      (snapshot2.data!.docs[index]['rate'] <
+                                          3.5))
+                                  ? const Icon(
+                                      Icons.sentiment_neutral,
+                                      color: Colors.amber,
+                                    )
+                                  : ((snapshot2.data!.docs[index]['rate'] >
+                                              3) &&
+                                          (snapshot2.data!.docs[index]['rate'] <
+                                              4.5))
+                                      ? const Icon(
+                                          Icons.sentiment_satisfied,
+                                          color: Colors.lightGreen,
+                                        )
+                                      : const Icon(
+                                          Icons.sentiment_very_satisfied,
+                                          color: Colors.green,
+                                        ),
+                    ],
+                  )
+                ],
+              ),
+              subtitle: Text(snapshot2.data!.docs[index]['comment']),
+            );
+          });
+    },
+  );
 }
