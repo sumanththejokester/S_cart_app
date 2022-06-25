@@ -1,6 +1,6 @@
-# multi_store_app
+# S_Cart_app
 
-A new Flutter project.
+My First Full Flutter project.
 
 ## Getting Started
 
