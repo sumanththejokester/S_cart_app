@@ -78,7 +78,8 @@ class DashboardScreen extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const EditBussinessScreen()));
+                      builder: (context) => Store(
+                          suppId: FirebaseAuth.instance.currentUser!.uid)));
             },
             child: const DashboardButtons(
                 ButtonLabel: 'Edit Profile', iconLabel: Icons.edit),

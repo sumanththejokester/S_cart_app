@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
+import 'package:multi_store_app/custumer_profile_components/editprofilescreen.dart';
 import 'package:multi_store_app/main_screen/cartscreen.dart';
 import 'package:multi_store_app/widgets/appbarwidgets.dart';
 
@@ -285,10 +286,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           child: Column(
                             children: [
                               InkWell(
-                                onTap: () {},
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              EditProfileScreen(
+                                                data: data,
+                                              )));
+                                },
                                 child: const ListTile(
                                   title: Text('Edit Profile'),
-                                  //subtitle: Text(''),
+                                  subtitle: Text(''),
                                   leading: Icon(Icons.edit),
                                 ),
                               ),
@@ -303,7 +312,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 onTap: () {},
                                 child: const ListTile(
                                   title: Text('Change Password'),
-                                  //subtitle: Text(''),
+                                  subtitle: Text(''),
                                   leading: Icon(Icons.lock),
                                 ),
                               ),

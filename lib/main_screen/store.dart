@@ -113,7 +113,9 @@ class _StoreState extends State<Store> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  EditBussinessScreen()));
+                                                  EditBussinessScreen(
+                                                    data: data,
+                                                  )));
                                     },
                                     child: Row(
                                       mainAxisAlignment:
