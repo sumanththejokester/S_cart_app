@@ -27,35 +27,40 @@ class _EditBussinessScreenState extends State<EditBussinessScreen> {
   late String phone;
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: ScaffoldMessenger(
-        key: scaffoldKey,
-        child: Scaffold(
+    return ScaffoldMessenger(
+      key: scaffoldKey,
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          elevation: 0,
           backgroundColor: Colors.white,
-          appBar: AppBar(
-            elevation: 0,
-            backgroundColor: Colors.white,
-            title: const AppBarTitle(title: 'Edit Store'),
-            leading: const AppBarBackButton(),
-          ),
-          body: Form(
+          title: const AppBarTitle(title: 'Edit Store'),
+          leading: const AppBarBackButton(),
+        ),
+        body: SingleChildScrollView(
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+          child: Form(
             key: formKey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'Store Logo ',
-                      style: TextStyle(
-                          fontSize: 24,
-                          color: Colors.blueGrey,
-                          fontWeight: FontWeight.w600),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                      child: Text(
+                        'Store Logo',
+                        style: TextStyle(
+                            fontSize: 24,
+                            color: Colors.blueGrey,
+                            fontWeight: FontWeight.w600),
+                      ),
                     ),
-                    //        SizedBox(
-                    //        height: 25,
-                    //    ),
+                    SizedBox(
+                      height: 25,
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -91,38 +96,35 @@ class _EditBussinessScreenState extends State<EditBussinessScreen> {
                         storeimageFile == null
                             ? SizedBox()
                             : CircleAvatar(
-                                radius: 50,
+                                radius: 60,
                                 backgroundImage:
                                     FileImage(File(storeimageFile!.path))),
                       ],
                     ),
-                    //       SizedBox(
-                    //       height: 25,
-                    //   ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: Divider(
-                        color: Colors.blueGrey,
-                        thickness: 2,
-                      ),
-                    )
+                    SizedBox(
+                      height: 25,
+                    ),
                   ],
                 ),
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'Edit Bussiness Info',
-                      style: TextStyle(
-                          fontSize: 24,
-                          color: Colors.blueGrey,
-                          fontWeight: FontWeight.w600),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                      child: Text(
+                        'Edit Bussiness Info',
+                        style: TextStyle(
+                            fontSize: 24,
+                            color: Colors.blueGrey,
+                            fontWeight: FontWeight.w600),
+                      ),
                     ),
-                    //       SizedBox(
-                    //       height: 25,
-                    //   ),
+                    SizedBox(
+                      height: 25,
+                    ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 28.0, vertical: 8),
+                          horizontal: 28.0, vertical: 18),
                       child: TextFormField(
                         initialValue: widget.data['storename'],
                         validator: (value) {
@@ -142,7 +144,7 @@ class _EditBussinessScreenState extends State<EditBussinessScreen> {
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 28.0, vertical: 8),
+                          horizontal: 28.0, vertical: 18),
                       child: TextFormField(
                         initialValue: widget.data['phone'],
                         validator: (value) {
@@ -160,9 +162,9 @@ class _EditBussinessScreenState extends State<EditBussinessScreen> {
                         ),
                       ),
                     ),
-                    //  SizedBox(
-                    //  height: 25,
-                    //),
+                    SizedBox(
+                      height: 25,
+                    ),
                   ],
                 ),
                 Row(

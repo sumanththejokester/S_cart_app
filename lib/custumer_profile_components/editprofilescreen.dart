@@ -39,158 +39,186 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           title: const AppBarTitle(title: 'Edit Profile'),
           leading: const AppBarBackButton(),
         ),
-        body: Form(
-          key: formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  //        SizedBox(
-                  //        height: 25,
-                  //    ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      CircleAvatar(
-                        radius: 50,
-                        backgroundImage:
-                            NetworkImage(widget.data['profileimage']),
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Button(
-                              buttonlabel: 'Change',
-                              onPressed: () {
-                                pickdp();
-                              },
-                              buttonwidth: 0.3),
-                          SizedBox(
-                            height: 15,
-                          ),
-                          imageFile == null
-                              ? SizedBox()
-                              : Button(
-                                  buttonlabel: 'Reset',
-                                  onPressed: () {
-                                    setState(() {
-                                      imageFile = null;
-                                    });
-                                  },
-                                  buttonwidth: 0.3),
-                        ],
-                      ),
-                      imageFile == null
-                          ? SizedBox()
-                          : CircleAvatar(
-                              radius: 50,
-                              backgroundImage:
-                                  FileImage(File(imageFile!.path))),
-                    ],
-                  ),
-                  //       SizedBox(
-                  //       height: 25,
-                  //   ),
-                ],
-              ),
-              Column(
-                children: [
-                  //       SizedBox(
-                  //       height: 25,
-                  //   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 28.0, vertical: 8),
-                    child: TextFormField(
-                      initialValue: widget.data['name'],
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'Enter Valid Name';
-                        }
-                        return null;
-                      },
-                      onSaved: (value) {
-                        name = value!;
-                      },
-                      decoration: textformdecoration.copyWith(
-                        labelText: 'Name',
-                        hintText: 'Profile Name',
+        body: SingleChildScrollView(
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+          child: Form(
+            key: formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: 25,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                      child: Text(
+                        'Profile Photo',
+                        style: TextStyle(
+                            fontSize: 24,
+                            color: Colors.blueGrey,
+                            fontWeight: FontWeight.w600),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 28.0, vertical: 8),
-                    child: TextFormField(
-                      initialValue: widget.data['phone'],
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'Enter Valid Phone Number';
-                        }
-                        return null;
-                      },
-                      onSaved: (value) {
-                        phone = value!;
-                      },
-                      decoration: textformdecoration.copyWith(
-                        labelText: 'Phone',
-                        hintText: 'Edit Phone number',
+                    SizedBox(
+                      height: 25,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        CircleAvatar(
+                          radius: 60,
+                          backgroundImage:
+                              NetworkImage(widget.data['profileimage']),
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Button(
+                                buttonlabel: 'Change',
+                                onPressed: () {
+                                  pickdp();
+                                },
+                                buttonwidth: 0.3),
+                            SizedBox(
+                              height: 15,
+                            ),
+                            imageFile == null
+                                ? SizedBox()
+                                : Button(
+                                    buttonlabel: 'Reset',
+                                    onPressed: () {
+                                      setState(() {
+                                        imageFile = null;
+                                      });
+                                    },
+                                    buttonwidth: 0.3),
+                          ],
+                        ),
+                        imageFile == null
+                            ? SizedBox()
+                            : CircleAvatar(
+                                radius: 60,
+                                backgroundImage:
+                                    FileImage(File(imageFile!.path))),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 25,
+                    ),
+                  ],
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                      child: Text(
+                        'Edit Personal Info',
+                        style: TextStyle(
+                            fontSize: 24,
+                            color: Colors.blueGrey,
+                            fontWeight: FontWeight.w600),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 28.0, vertical: 8),
-                    child: TextFormField(
-                      initialValue: widget.data['address'],
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'Enter Valid Adress';
-                        }
-                        return null;
-                      },
-                      onSaved: (value) {
-                        address = value!;
-                      },
-                      decoration: textformdecoration.copyWith(
-                        labelText: 'Address',
-                        hintText: 'Edit Address',
+                    SizedBox(
+                      height: 25,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 28.0, vertical: 14),
+                      child: TextFormField(
+                        initialValue: widget.data['name'],
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'Enter Valid Name';
+                          }
+                          return null;
+                        },
+                        onSaved: (value) {
+                          name = value!;
+                        },
+                        decoration: textformdecoration.copyWith(
+                          labelText: 'Name',
+                          hintText: 'Profile Name',
+                        ),
                       ),
                     ),
-                  ),
-                  //  SizedBox(
-                  //  height: 25,
-                  //),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Button(
-                      buttonlabel: 'Cancel',
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      buttonwidth: 0.3),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  processing == true
-                      ? Button(
-                          buttonlabel: 'Saving...',
-                          onPressed: () {},
-                          buttonwidth: 0.5)
-                      : Button(
-                          buttonlabel: 'Save Changes',
-                          onPressed: () {
-                            savechanges();
-                          },
-                          buttonwidth: 0.5)
-                ],
-              )
-            ],
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 28.0, vertical: 14),
+                      child: TextFormField(
+                        initialValue: widget.data['phone'],
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'Enter Valid Phone Number';
+                          }
+                          return null;
+                        },
+                        onSaved: (value) {
+                          phone = value!;
+                        },
+                        decoration: textformdecoration.copyWith(
+                          labelText: 'Phone',
+                          hintText: 'Edit Phone number',
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 28.0, vertical: 8),
+                      child: TextFormField(
+                        initialValue: widget.data['address'],
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'Enter Valid Adress';
+                          }
+                          return null;
+                        },
+                        onSaved: (value) {
+                          address = value!;
+                        },
+                        decoration: textformdecoration.copyWith(
+                          labelText: 'Address',
+                          hintText: 'Edit Address',
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 25,
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Button(
+                        buttonlabel: 'Cancel',
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        buttonwidth: 0.3),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    processing == true
+                        ? Button(
+                            buttonlabel: 'Saving...',
+                            onPressed: () {},
+                            buttonwidth: 0.5)
+                        : Button(
+                            buttonlabel: 'Save Changes',
+                            onPressed: () {
+                              savechanges();
+                            },
+                            buttonwidth: 0.5)
+                  ],
+                )
+              ],
+            ),
           ),
         ),
       ),
