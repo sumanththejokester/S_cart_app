@@ -84,7 +84,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                 },
                                 buttonwidth: 0.3),
                             SizedBox(
-                              height: 15,
+                              height: 25,
                             ),
                             imageFile == null
                                 ? SizedBox()
