@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:multi_store_app/custumer_profile_components/editprofilescreen.dart';
 import 'package:multi_store_app/main_screen/cartscreen.dart';
+import 'package:multi_store_app/minor_screen/changepasswordscreen.dart';
 import 'package:multi_store_app/widgets/appbarwidgets.dart';
 
 import '../custumer_profile_components/custumerordersscreen.dart';
@@ -309,7 +310,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 ),
                               ),
                               InkWell(
-                                onTap: () {},
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => ChangePassword(),
+                                      ));
+                                },
                                 child: const ListTile(
                                   title: Text('Change Password'),
                                   subtitle: Text(''),

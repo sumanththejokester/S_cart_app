@@ -1,5 +1,3 @@
-// ignore_for_file: unused_field
-
 import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
@@ -358,6 +356,7 @@ class _UploadProductState extends State<UploadProduct> {
                         ),
                       ),
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
                             padding: const EdgeInsets.all(8.0),
@@ -384,8 +383,10 @@ class _UploadProductState extends State<UploadProduct> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 8.0, vertical: 8),
                             child: SizedBox(
+                              height: MediaQuery.of(context).size.height * 0.09,
                               width: MediaQuery.of(context).size.width * 0.27,
                               child: TextFormField(
                                 maxLength: 2,
@@ -562,6 +563,7 @@ extension PriceValidator on String {
     return RegExp(r'^[1-9][0-9]*[\.]*[0-9]{0,2}$').hasMatch(this);
   }
 }
+
 extension DiscountValidator on String {
   bool isValidDiscount() {
     return RegExp(r'^([0-9]*)$').hasMatch(this);

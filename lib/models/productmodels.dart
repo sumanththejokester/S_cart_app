@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:multi_store_app/minor_screen/editproductsceen.dart';
 import 'package:multi_store_app/minor_screen/productscreen.dart';
 import 'package:multi_store_app/provider/wishlistprovider.dart';
 import 'package:provider/provider.dart';
@@ -112,9 +113,16 @@ class _ProductModelState extends State<ProductModel> {
                           widget.products['sid'] ==
                                   FirebaseAuth.instance.currentUser!.uid
                               ? IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(Icons.edit_note),
-                                  color: Colors.red[900],
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => EditProduct(
+                                                  items: widget.products,
+                                                )));
+                                  },
+                                  icon: Icon(Icons.edit_outlined),
+                                  color: Colors.blueGrey,
                                 )
                               : IconButton(
                                   onPressed: () {

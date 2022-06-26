@@ -2,6 +2,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:multi_store_app/auth/forgotpasswordscreen.dart';
 
 import '../widgets/authscreenwidgets.dart';
 
@@ -142,7 +143,12 @@ class _CustumerLoginState extends State<CustumerLogin> {
                                 hintText: 'Enter Your Password')),
                       ),
                       TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => resetPassword()));
+                          },
                           child: const Text(
                             'Forgot Password ? ',
                             style: TextStyle(
@@ -180,6 +186,7 @@ class _CustumerLoginState extends State<CustumerLogin> {
     );
   }
 }
+
 
 //final TextEditingController _namecontroller = TextEditingController();
 //final TextEditingController _emailcontroller = TextEditingController();
