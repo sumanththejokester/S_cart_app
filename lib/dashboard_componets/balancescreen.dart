@@ -1,3 +1,5 @@
+// ignore_for_file: sized_box_for_whitespace
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +40,7 @@ class BalanceScreen extends StatelessWidget {
             body: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 StaticsButton2(
@@ -74,7 +76,7 @@ class BalanceScreen extends StatelessWidget {
                                   'images/inapp/shadowr.png',
                                   color: Colors.blueGrey,
                                 ))),
-                        Positioned(
+                        const Positioned(
                           left: 60,
                           top: 21,
                           child: Center(
@@ -92,7 +94,7 @@ class BalanceScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 50,
                 )
               ],

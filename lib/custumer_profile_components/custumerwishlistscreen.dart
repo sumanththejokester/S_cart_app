@@ -24,7 +24,7 @@ class _CustumerWishListScreenState extends State<CustumerWishListScreen> {
             //leading: AppBarBackButton(),
             elevation: 0,
             backgroundColor: Colors.white,
-            leading: AppBarBackButton(),
+            leading: const AppBarBackButton(),
             title: const AppBarTitle(title: 'Wishlist'),
             actions: [
               context.watch<WishList>().getWishItems.isEmpty

@@ -45,7 +45,7 @@ class _resetPasswordState extends State<resetPassword> {
       key: _scaffoldkey,
       child: Scaffold(
         appBar: AppBar(
-          leading: AppBarBackButton(),
+          leading: const AppBarBackButton(),
           elevation: 0,
           backgroundColor: Colors.white,
         ),
@@ -58,8 +58,8 @@ class _resetPasswordState extends State<resetPassword> {
               const SizedBox(
                 height: 200,
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
+              const Padding(
+                padding: EdgeInsets.all(8.0),
                 child: AuthHeader(headerlabel: 'Reset Password'),
               ),
               const SizedBox(
@@ -91,7 +91,7 @@ class _resetPasswordState extends State<resetPassword> {
                           hintText: 'Enter Your Email')),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
               Container(
@@ -106,14 +106,14 @@ class _resetPasswordState extends State<resetPassword> {
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
+                      children: const [
                         Icon(
                           Icons.lock_outline,
                           color: Colors.white,
                         ),
                         Text(
                           'Reset Password',
-                          style: const TextStyle(
+                          style: TextStyle(
                               fontSize: 20, color: Colors.white),
                         ),
                       ],
@@ -127,7 +127,7 @@ class _resetPasswordState extends State<resetPassword> {
                             Image.asset('images/inapp/ForgotEmailNotify.png'),
                       ),
                     )
-                  : SizedBox(
+                  : const SizedBox(
                       height: 40,
                     ),
               const SizedBox(

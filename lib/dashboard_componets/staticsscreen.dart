@@ -1,3 +1,5 @@
+// ignore_for_file: sized_box_for_whitespace
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -84,7 +86,7 @@ class StaticsButton extends StatelessWidget {
       children: [
         Text(
           label,
-          style: TextStyle(
+          style: const TextStyle(
               fontFamily: 'Acme', fontWeight: FontWeight.bold, fontSize: 24),
         ),
         Center(
@@ -142,7 +144,7 @@ class StaticsButton2 extends StatelessWidget {
       children: [
         Text(
           label,
-          style: TextStyle(
+          style: const TextStyle(
               fontFamily: 'Acme', fontWeight: FontWeight.bold, fontSize: 24),
         ),
         Center(
@@ -204,7 +206,7 @@ class _AnimatedCounterState extends State<AnimatedCounter>
   @override
   void initState() {
     _controller =
-        AnimationController(vsync: this, duration: Duration(seconds: 4));
+        AnimationController(vsync: this, duration: const Duration(seconds: 4));
     _animation = _controller;
     setState(() {
       _animation = Tween(begin: _animation.value, end: widget.count)
@@ -214,6 +216,7 @@ class _AnimatedCounterState extends State<AnimatedCounter>
     super.initState();
   }
 
+  @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
         animation: _animation,

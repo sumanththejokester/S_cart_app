@@ -1,13 +1,8 @@
-// ignore_for_file: unnecessary_const
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:multi_store_app/dashboard_componets/mystorescreen.dart';
 import 'package:multi_store_app/main_screen/store.dart';
 import 'package:multi_store_app/widgets/appbarwidgets.dart';
-
 import '../dashboard_componets/balancescreen.dart';
-import '../dashboard_componets/editbussinessscreen.dart';
 import '../dashboard_componets/manageproducts.dart';
 import '../dashboard_componets/staticsscreen.dart';
 import '../dashboard_componets/suppliersordersscreen.dart';
@@ -141,10 +136,8 @@ class DashboardButtons extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            gradient: const LinearGradient(colors: [
-              const Color.fromARGB(255, 189, 226, 241),
-              Colors.blueGrey
-            ])),
+            gradient: const LinearGradient(
+                colors: [Color.fromARGB(255, 189, 226, 241), Colors.blueGrey])),
         height: MediaQuery.of(context).size.height * 0.12,
         width: MediaQuery.of(context).size.height * 0.6,
         child: Center(

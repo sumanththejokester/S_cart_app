@@ -314,7 +314,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => ChangePassword(),
+                                        builder: (context) =>
+                                            const ChangePassword(),
                                       ));
                                 },
                                 child: const ListTile(

@@ -48,8 +48,8 @@ class _EditBussinessScreenState extends State<EditBussinessScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 18.0),
                       child: Text(
                         'Store Logo',
                         style: TextStyle(
@@ -58,7 +58,7 @@ class _EditBussinessScreenState extends State<EditBussinessScreen> {
                             fontWeight: FontWeight.w600),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 25,
                     ),
                     Row(
@@ -78,11 +78,11 @@ class _EditBussinessScreenState extends State<EditBussinessScreen> {
                                   pickstorelogo();
                                 },
                                 buttonwidth: 0.3),
-                            SizedBox(
+                            const SizedBox(
                               height: 15,
                             ),
                             storeimageFile == null
-                                ? SizedBox()
+                                ? const SizedBox()
                                 : Button(
                                     buttonlabel: 'Reset',
                                     onPressed: () {
@@ -94,14 +94,14 @@ class _EditBussinessScreenState extends State<EditBussinessScreen> {
                           ],
                         ),
                         storeimageFile == null
-                            ? SizedBox()
+                            ? const SizedBox()
                             : CircleAvatar(
                                 radius: 60,
                                 backgroundImage:
                                     FileImage(File(storeimageFile!.path))),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 25,
                     ),
                   ],
@@ -109,8 +109,8 @@ class _EditBussinessScreenState extends State<EditBussinessScreen> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 18.0),
                       child: Text(
                         'Edit Bussiness Info',
                         style: TextStyle(
@@ -119,7 +119,7 @@ class _EditBussinessScreenState extends State<EditBussinessScreen> {
                             fontWeight: FontWeight.w600),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 25,
                     ),
                     Padding(
@@ -162,7 +162,7 @@ class _EditBussinessScreenState extends State<EditBussinessScreen> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 25,
                     ),
                   ],
@@ -176,7 +176,7 @@ class _EditBussinessScreenState extends State<EditBussinessScreen> {
                           Navigator.pop(context);
                         },
                         buttonwidth: 0.3),
-                    SizedBox(
+                    const SizedBox(
                       width: 20,
                     ),
                     processing == true
@@ -202,6 +202,7 @@ class _EditBussinessScreenState extends State<EditBussinessScreen> {
 
   final ImagePicker _picker = ImagePicker();
   XFile? storeimageFile;
+  // ignore: unused_field
   dynamic _pickedStorelogoError;
   pickstorelogo() async {
     try {
@@ -231,6 +232,7 @@ class _EditBussinessScreenState extends State<EditBussinessScreen> {
         await ref.putFile(File(storeimageFile!.path));
 
         storelogo = await ref.getDownloadURL();
+      // ignore: empty_catches
       } catch (e) {}
     } else {
       storelogo = widget.data['storelogo'];

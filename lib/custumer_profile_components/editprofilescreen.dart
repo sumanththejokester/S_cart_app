@@ -50,11 +50,11 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 25,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 18.0),
                       child: Text(
                         'Profile Photo',
                         style: TextStyle(
@@ -63,7 +63,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                             fontWeight: FontWeight.w600),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 25,
                     ),
                     Row(
@@ -83,11 +83,11 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                   pickdp();
                                 },
                                 buttonwidth: 0.3),
-                            SizedBox(
+                            const SizedBox(
                               height: 25,
                             ),
                             imageFile == null
-                                ? SizedBox()
+                                ? const SizedBox()
                                 : Button(
                                     buttonlabel: 'Reset',
                                     onPressed: () {
@@ -99,14 +99,14 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                           ],
                         ),
                         imageFile == null
-                            ? SizedBox()
+                            ? const SizedBox()
                             : CircleAvatar(
                                 radius: 60,
                                 backgroundImage:
                                     FileImage(File(imageFile!.path))),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 45,
                     ),
                   ],
@@ -114,8 +114,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 18.0),
                       child: Text(
                         'Edit Personal Info',
                         style: TextStyle(
@@ -124,7 +124,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                             fontWeight: FontWeight.w600),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 25,
                     ),
                     Padding(
@@ -187,7 +187,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 25,
                     ),
                   ],
@@ -201,7 +201,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                           Navigator.pop(context);
                         },
                         buttonwidth: 0.3),
-                    SizedBox(
+                    const SizedBox(
                       width: 20,
                     ),
                     processing == true
@@ -227,6 +227,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
   final ImagePicker _picker = ImagePicker();
   XFile? imageFile;
+  // ignore: unused_field
   dynamic _pickedlogoError;
   pickdp() async {
     try {
@@ -256,6 +257,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         await ref.putFile(File(imageFile!.path));
 
         logo = await ref.getDownloadURL();
+      // ignore: empty_catches
       } catch (e) {}
     } else {
       logo = widget.data['profileimage'];

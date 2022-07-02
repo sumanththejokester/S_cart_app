@@ -39,18 +39,20 @@ class _CustumerHomeScreenState extends State<CustumerHomeScreen> {
         unselectedItemColor: Colors.grey,
         currentIndex: _SelectedIndex,
         items: [
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: "HOME",
           ),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: "CATEGORY"),
-          BottomNavigationBarItem(icon: Icon(Icons.shop), label: "STORES"),
+          const BottomNavigationBarItem(
+              icon: Icon(Icons.search), label: "CATEGORY"),
+          const BottomNavigationBarItem(
+              icon: Icon(Icons.shop), label: "STORES"),
           BottomNavigationBarItem(
               icon: Badge(
                   showBadge:
                       context.read<Cart>().getItems.isEmpty ? false : true,
                   animationType: BadgeAnimationType.slide,
-                  badgeColor: Color.fromARGB(255, 152, 189, 205),
+                  badgeColor: const Color.fromARGB(255, 152, 189, 205),
                   badgeContent: Text(
                     context.watch<Cart>().getItems.length.toString(),
                     style: TextStyle(
@@ -58,9 +60,10 @@ class _CustumerHomeScreenState extends State<CustumerHomeScreen> {
                         fontSize: 12,
                         fontWeight: FontWeight.w600),
                   ),
-                  child: Icon(Icons.shopping_cart)),
+                  child: const Icon(Icons.shopping_cart)),
               label: "CART"),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: "PROFILE"),
+          const BottomNavigationBarItem(
+              icon: Icon(Icons.person), label: "PROFILE"),
         ],
         onTap: (index) {
           setState(() {

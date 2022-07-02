@@ -5,7 +5,6 @@ import 'package:multi_store_app/widgets/CupertinoDialog.dart';
 import 'package:multi_store_app/widgets/appbarwidgets.dart';
 import 'package:provider/provider.dart';
 import '../provider/cartprovider.dart';
-import '../widgets/button.dart';
 
 class CartScreen extends StatefulWidget {
   final Widget? back;
@@ -89,7 +88,7 @@ class _CartScreenState extends State<CartScreen> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          PlaceOrderScreen()));
+                                          const PlaceOrderScreen()));
                             },
                       child: Text(
                         'Check Out',
