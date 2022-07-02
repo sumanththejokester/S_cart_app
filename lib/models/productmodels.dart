@@ -83,7 +83,7 @@ class _ProductModelState extends State<ProductModel> {
                               ),
                               Text(widget.products['price'].toString(),
                                   style: widget.products['discount'] != 0
-                                      ? TextStyle(
+                                      ? const TextStyle(
                                           color: Colors.blueGrey,
                                           fontSize: 14,
                                           fontWeight: FontWeight.w600,
@@ -93,7 +93,7 @@ class _ProductModelState extends State<ProductModel> {
                                           color: Colors.red[900],
                                           fontSize: 16,
                                           fontWeight: FontWeight.w600)),
-                              SizedBox(
+                              const SizedBox(
                                 width: 5,
                               ),
                               widget.products['discount'] != 0
@@ -107,7 +107,7 @@ class _ProductModelState extends State<ProductModel> {
                                           color: Colors.red[900],
                                           fontWeight: FontWeight.w600,
                                           fontSize: 16))
-                                  : Text('')
+                                  : const Text('')
                             ],
                           ),
                           widget.products['sid'] ==
@@ -121,7 +121,7 @@ class _ProductModelState extends State<ProductModel> {
                                                   items: widget.products,
                                                 )));
                                   },
-                                  icon: Icon(Icons.edit_outlined),
+                                  icon: const Icon(Icons.edit_outlined),
                                   color: Colors.blueGrey,
                                 )
                               : IconButton(
@@ -163,8 +163,9 @@ class _ProductModelState extends State<ProductModel> {
                                                   widget
                                                       .products['productid']) !=
                                           null
-                                      ? Icon(Icons.favorite)
-                                      : Icon(Icons.favorite_border_outlined),
+                                      ? const Icon(Icons.favorite)
+                                      : const Icon(
+                                          Icons.favorite_border_outlined),
                                   color: Colors.redAccent,
                                 )
                         ],
@@ -184,7 +185,7 @@ class _ProductModelState extends State<ProductModel> {
                     width: 80,
                     decoration: BoxDecoration(
                         color: Colors.blueGrey[300],
-                        borderRadius: BorderRadius.only(
+                        borderRadius: const BorderRadius.only(
                             topRight: Radius.circular(10),
                             bottomRight: Radius.circular(10))),
                     child: Center(
@@ -192,7 +193,7 @@ class _ProductModelState extends State<ProductModel> {
                             'Save  ${widget.products['discount'].toString()} %')),
                   ),
                 )
-              : SizedBox()
+              : const SizedBox()
         ]),
       ),
     );

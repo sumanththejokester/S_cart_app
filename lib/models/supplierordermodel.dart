@@ -18,13 +18,14 @@ class SupplierOrderModel extends StatelessWidget {
         child: ExpansionTile(
           title: Container(
             constraints:
-                BoxConstraints(maxHeight: 80, maxWidth: double.infinity),
+                const BoxConstraints(maxHeight: 80, maxWidth: double.infinity),
             child: Row(
               children: [
                 Padding(
                   padding: const EdgeInsets.only(right: 15.0),
                   child: Container(
-                    constraints: BoxConstraints(maxHeight: 80, maxWidth: 80),
+                    constraints:
+                        const BoxConstraints(maxHeight: 80, maxWidth: 80),
                     child: Image.network(order['orderimage']),
                   ),
                 ),
@@ -88,9 +89,9 @@ class SupplierOrderModel extends StatelessWidget {
           subtitle: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text('See More..'),
+              const Text('See More..'),
               order['deliverystatus'] == ''
-                  ? Text(
+                  ? const Text(
                       'Yet to Deliver your order',
                       style: TextStyle(color: Colors.redAccent),
                     )
@@ -106,7 +107,7 @@ class SupplierOrderModel extends StatelessWidget {
               width: double.infinity,
               decoration: BoxDecoration(
                   color: Colors.blueGrey.withOpacity(0.2),
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                       bottomLeft: Radius.circular(8),
                       bottomRight: Radius.circular(8))),
               child: Padding(
@@ -115,7 +116,7 @@ class SupplierOrderModel extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        Text(
+                        const Text(
                           'Name :  ',
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
@@ -131,7 +132,7 @@ class SupplierOrderModel extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        Text(
+                        const Text(
                           'Phone : ',
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
@@ -147,7 +148,7 @@ class SupplierOrderModel extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        Text(
+                        const Text(
                           'Email : ',
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
@@ -163,7 +164,7 @@ class SupplierOrderModel extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        Text(
+                        const Text(
                           'Address : ',
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
@@ -179,7 +180,7 @@ class SupplierOrderModel extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        Text(
+                        const Text(
                           'Payment Status : ',
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
@@ -188,14 +189,14 @@ class SupplierOrderModel extends StatelessWidget {
                         ),
                         Text(
                           order['paymentstatus'],
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontFamily: 'Acme', color: Colors.deepPurple),
                         ),
                       ],
                     ),
                     Row(
                       children: [
-                        Text(
+                        const Text(
                           'Delivery Status : ',
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
@@ -211,7 +212,7 @@ class SupplierOrderModel extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        Text(
+                        const Text(
                           'Order Date : ',
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
@@ -228,10 +229,10 @@ class SupplierOrderModel extends StatelessWidget {
                       ],
                     ),
                     order['deliverystatus'] == 'delivered'
-                        ? Text('')
+                        ? const Text('')
                         : Row(
                             children: [
-                              Text(
+                              const Text(
                                 'Change Delivery Status to:',
                                 style: TextStyle(
                                     fontWeight: FontWeight.w600,
@@ -255,7 +256,7 @@ class SupplierOrderModel extends StatelessWidget {
                                           });
                                         });
                                       },
-                                      child: Text('shipping?'))
+                                      child: const Text('shipping?'))
                                   : TextButton(
                                       onPressed: () async {
                                         await FirebaseFirestore.instance
@@ -265,7 +266,7 @@ class SupplierOrderModel extends StatelessWidget {
                                           'deliverystatus': 'delivered'
                                         });
                                       },
-                                      child: Text('delivered?'))
+                                      child: const Text('delivered?'))
                             ],
                           ),
                   ],

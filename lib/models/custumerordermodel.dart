@@ -3,9 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:intl/intl.dart';
-import 'package:multi_store_app/widgets/CupertinoDialog.dart';
 import 'package:multi_store_app/widgets/button.dart';
-import 'package:multi_store_app/widgets/snackbar.dart';
 
 class CustumerOrderModel extends StatefulWidget {
   final dynamic order;
@@ -29,13 +27,14 @@ class _CustumerOrderModelState extends State<CustumerOrderModel> {
         child: ExpansionTile(
           title: Container(
             constraints:
-                BoxConstraints(maxHeight: 80, maxWidth: double.infinity),
+                const BoxConstraints(maxHeight: 80, maxWidth: double.infinity),
             child: Row(
               children: [
                 Padding(
                   padding: const EdgeInsets.only(right: 15.0),
                   child: Container(
-                    constraints: BoxConstraints(maxHeight: 80, maxWidth: 80),
+                    constraints:
+                        const BoxConstraints(maxHeight: 80, maxWidth: 80),
                     child: Image.network(widget.order['orderimage']),
                   ),
                 ),
@@ -99,9 +98,9 @@ class _CustumerOrderModelState extends State<CustumerOrderModel> {
           subtitle: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text('See More..'),
+              const Text('See More..'),
               widget.order['deliverystatus'] == ''
-                  ? Text(
+                  ? const Text(
                       'Yet to Deliver your order',
                       style: TextStyle(color: Colors.redAccent),
                     )
@@ -123,7 +122,7 @@ class _CustumerOrderModelState extends State<CustumerOrderModel> {
                           : widget.order['deliverystatus'] == ''
                               ? Colors.redAccent.withOpacity(0.2)
                               : Colors.blueGrey.withOpacity(0.2),
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                       bottomLeft: Radius.circular(8),
                       bottomRight: Radius.circular(8))),
               child: Padding(
@@ -132,7 +131,7 @@ class _CustumerOrderModelState extends State<CustumerOrderModel> {
                   children: [
                     Row(
                       children: [
-                        Text(
+                        const Text(
                           'Name :  ',
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
@@ -148,7 +147,7 @@ class _CustumerOrderModelState extends State<CustumerOrderModel> {
                     ),
                     Row(
                       children: [
-                        Text(
+                        const Text(
                           'Phone : ',
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
@@ -164,7 +163,7 @@ class _CustumerOrderModelState extends State<CustumerOrderModel> {
                     ),
                     Row(
                       children: [
-                        Text(
+                        const Text(
                           'Email : ',
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
@@ -180,7 +179,7 @@ class _CustumerOrderModelState extends State<CustumerOrderModel> {
                     ),
                     Row(
                       children: [
-                        Text(
+                        const Text(
                           'Address : ',
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
@@ -196,7 +195,7 @@ class _CustumerOrderModelState extends State<CustumerOrderModel> {
                     ),
                     Row(
                       children: [
-                        Text(
+                        const Text(
                           'Payment Status : ',
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
@@ -205,14 +204,14 @@ class _CustumerOrderModelState extends State<CustumerOrderModel> {
                         ),
                         Text(
                           widget.order['paymentstatus'],
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontFamily: 'Acme', color: Colors.deepPurple),
                         ),
                       ],
                     ),
                     Row(
                       children: [
-                        Text(
+                        const Text(
                           'Delivery Status : ',
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
@@ -231,7 +230,7 @@ class _CustumerOrderModelState extends State<CustumerOrderModel> {
                             widget.order['deliverystatus'] == 'preparing'
                         ? Row(
                             children: [
-                              Text(
+                              const Text(
                                 'Estimated Delivery On  : ',
                                 style: TextStyle(
                                     fontWeight: FontWeight.w600,
@@ -248,8 +247,8 @@ class _CustumerOrderModelState extends State<CustumerOrderModel> {
                               ),
                             ],
                           )
-                        : Text(''),
-                    SizedBox(
+                        : const Text(''),
+                    const SizedBox(
                       height: 15,
                     ),
                     Row(
@@ -264,7 +263,7 @@ class _CustumerOrderModelState extends State<CustumerOrderModel> {
                                             color: Colors.white,
                                             child: Column(
                                               children: [
-                                                SizedBox(
+                                                const SizedBox(
                                                   height: 200,
                                                 ),
                                                 RatingBar.builder(
@@ -275,45 +274,45 @@ class _CustumerOrderModelState extends State<CustumerOrderModel> {
                                                       (context, index) {
                                                     switch (index) {
                                                       case 0:
-                                                        return Icon(
+                                                        return const Icon(
                                                           Icons
                                                               .sentiment_very_dissatisfied,
                                                           color: Colors.red,
                                                         );
                                                       case 1:
-                                                        return Icon(
+                                                        return const Icon(
                                                           Icons
                                                               .sentiment_dissatisfied,
                                                           color:
                                                               Colors.redAccent,
                                                         );
                                                       case 2:
-                                                        return Icon(
+                                                        return const Icon(
                                                           Icons
                                                               .sentiment_neutral,
                                                           color: Colors.amber,
                                                         );
                                                       case 3:
-                                                        return Icon(
+                                                        return const Icon(
                                                           Icons
                                                               .sentiment_satisfied,
                                                           color:
                                                               Colors.lightGreen,
                                                         );
                                                       case 4:
-                                                        return Icon(
+                                                        return const Icon(
                                                           Icons
                                                               .sentiment_very_satisfied,
                                                           color: Colors.green,
                                                         );
                                                     }
-                                                    return Text('');
+                                                    return const Text('');
                                                   },
                                                   onRatingUpdate: (rating) {
                                                     rate = rating;
                                                   },
                                                 ),
-                                                SizedBox(
+                                                const SizedBox(
                                                   height: 50,
                                                 ),
                                                 Padding(
@@ -349,7 +348,7 @@ class _CustumerOrderModelState extends State<CustumerOrderModel> {
                                                         focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(15), borderSide: const BorderSide(color: Color.fromARGB(255, 161, 188, 198), width: 2))),
                                                   ),
                                                 ),
-                                                SizedBox(
+                                                const SizedBox(
                                                   height: 50,
                                                 ),
                                                 Row(
@@ -428,7 +427,7 @@ class _CustumerOrderModelState extends State<CustumerOrderModel> {
                                                             });
 
                                                             await Future.delayed(
-                                                                    Duration(
+                                                                    const Duration(
                                                                         microseconds:
                                                                             100))
                                                                 .whenComplete(() =>
@@ -437,7 +436,7 @@ class _CustumerOrderModelState extends State<CustumerOrderModel> {
                                                           },
                                                           buttonwidth: 0.3),
                                                     ),
-                                                    SizedBox(
+                                                    const SizedBox(
                                                       width: 10,
                                                     )
                                                   ],
@@ -446,8 +445,8 @@ class _CustumerOrderModelState extends State<CustumerOrderModel> {
                                             ),
                                           ));
                                 },
-                                child: Text('Write Review'))
-                            : Text(''),
+                                child: const Text('Write Review'))
+                            : const Text(''),
                         widget.order['deliverystatus'] == 'delivered' &&
                                 widget.order['orderreview'] == true
                             ? Row(
@@ -462,7 +461,7 @@ class _CustumerOrderModelState extends State<CustumerOrderModel> {
                                   )
                                 ],
                               )
-                            : Text('')
+                            : const Text('')
                       ],
                     )
                   ],

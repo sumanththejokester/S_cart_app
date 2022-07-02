@@ -94,7 +94,7 @@ class WishListItems extends StatelessWidget {
                                               Icons.delete_outlined,
                                               color: Colors.blueGrey[900],
                                             )),
-                                        SizedBox(
+                                        const SizedBox(
                                           width: 10,
                                         ),
                                         context
@@ -108,7 +108,7 @@ class WishListItems extends StatelessWidget {
                                                                     .documentId) !=
                                                     null ||
                                                 product.qty == 0
-                                            ? SizedBox()
+                                            ? const SizedBox()
                                             : IconButton(
                                                 onPressed: () {
                                                   context.read<Cart>().addItem(
