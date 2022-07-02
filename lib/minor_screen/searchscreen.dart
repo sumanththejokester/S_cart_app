@@ -1,7 +1,4 @@
-import 'dart:ui';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:multi_store_app/models/searchmodel.dart';
@@ -77,7 +74,6 @@ class _SearchScreenState extends State<SearchScreen> {
                     return const Material(
                         child: Center(child: CircularProgressIndicator()));
                   }
-                  ;
                   final result = snapshot.data!.docs.where(
                     (element) => element['productname'].contains(search),
                   );

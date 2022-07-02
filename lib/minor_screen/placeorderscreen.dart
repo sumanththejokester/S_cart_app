@@ -22,6 +22,7 @@ class _PlaceOrderScreenState extends State<PlaceOrderScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: unused_local_variable
     double totalprice = context.watch<Cart>().totalprice;
     return FutureBuilder<DocumentSnapshot>(
         future: custumers.doc(FirebaseAuth.instance.currentUser!.uid).get(),
@@ -35,7 +36,7 @@ class _PlaceOrderScreenState extends State<PlaceOrderScreen> {
             return const Text("Document does not exist");
           }
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Material(
+            return const Material(
               child: Center(
                 child: CircularProgressIndicator(),
               ),
@@ -53,8 +54,8 @@ class _PlaceOrderScreenState extends State<PlaceOrderScreen> {
                   appBar: AppBar(
                     elevation: 0,
                     backgroundColor: Colors.blueGrey[100],
-                    leading: AppBarBackButton(),
-                    title: AppBarTitle(title: 'Place Order'),
+                    leading: const AppBarBackButton(),
+                    title: const AppBarTitle(title: 'Place Order'),
                   ),
                   body: Padding(
                     padding: const EdgeInsets.fromLTRB(
@@ -80,7 +81,7 @@ class _PlaceOrderScreenState extends State<PlaceOrderScreen> {
                               children: [
                                 Row(
                                   children: [
-                                    Text(
+                                    const Text(
                                       'Name : ',
                                       style: TextStyle(
                                           fontWeight: FontWeight.w600),
@@ -90,7 +91,7 @@ class _PlaceOrderScreenState extends State<PlaceOrderScreen> {
                                 ),
                                 Row(
                                   children: [
-                                    Text(
+                                    const Text(
                                       'Phone : ',
                                       style: TextStyle(
                                           fontWeight: FontWeight.w600),
@@ -102,7 +103,7 @@ class _PlaceOrderScreenState extends State<PlaceOrderScreen> {
                                     width: double.infinity,
                                     child: Row(
                                       children: [
-                                        Text(
+                                        const Text(
                                           'Address : ',
                                           style: TextStyle(
                                               fontWeight: FontWeight.w600),
@@ -114,7 +115,7 @@ class _PlaceOrderScreenState extends State<PlaceOrderScreen> {
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         Expanded(
@@ -247,7 +248,8 @@ class _PlaceOrderScreenState extends State<PlaceOrderScreen> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => PaymentScreen()));
+                                    builder: (context) =>
+                                        const PaymentScreen()));
                           },
                           buttonwidth: 1),
                     ),

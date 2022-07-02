@@ -28,12 +28,14 @@ class _FullScreenImageScreenState extends State<FullScreenImageScreen> {
           children: [
             Center(
                 child: Text(
+              // ignore: prefer_adjacent_string_concatenation
               ('${index + 1}' + ' / ' + widget.imagesList.length.toString()),
               style: TextStyle(
                   color: Colors.blueGrey[900],
                   fontSize: 18,
                   letterSpacing: 1.5),
             )),
+            // ignore: sized_box_for_whitespace
             Container(
               height: MediaQuery.of(context).size.height * 0.5,
               //decoration: BoxDecoration(border: Border.all()),

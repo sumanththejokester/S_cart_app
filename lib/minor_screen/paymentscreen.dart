@@ -29,9 +29,9 @@ class _PaymentScreenState extends State<PaymentScreen> {
       max: 100,
       msg: 'Making Order...',
       msgFontSize: 20,
-      msgColor: Color.fromARGB(255, 38, 50, 56),
-      progressBgColor: Color.fromARGB(255, 207, 216, 220),
-      progressValueColor: Color.fromARGB(255, 38, 50, 56),
+      msgColor: const Color.fromARGB(255, 38, 50, 56),
+      progressBgColor: const Color.fromARGB(255, 207, 216, 220),
+      progressValueColor: const Color.fromARGB(255, 38, 50, 56),
     );
   }
 
@@ -53,8 +53,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
           }
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Material(
-              child: const Center(
-                child: const CircularProgressIndicator(),
+              child: Center(
+                child: CircularProgressIndicator(),
               ),
             );
           }
@@ -287,12 +287,13 @@ class _PaymentScreenState extends State<PaymentScreen> {
                           onPressed: () {
                             if (selectedvalue == 1) {
                               showModalBottomSheet(
-                                  shape: RoundedRectangleBorder(
+                                  shape: const RoundedRectangleBorder(
                                     borderRadius: BorderRadius.only(
                                         topLeft: Radius.circular(15),
                                         topRight: Radius.circular(15)),
                                   ),
                                   context: context,
+                                  // ignore: sized_box_for_whitespace
                                   builder: (context) => Container(
                                         height:
                                             MediaQuery.of(context).size.height *
@@ -389,7 +390,6 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                                         });
                                                       });
                                                     }
-                                                    ;
                                                     context
                                                         .read<Cart>()
                                                         .clearCart();

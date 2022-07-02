@@ -132,7 +132,7 @@ class CartItems extends StatelessWidget {
                                                                     Navigator.pop(
                                                                         context);
                                                                   },
-                                                                  child: Text(
+                                                                  child: const Text(
                                                                       'Move To WishList'),
                                                                 ),
                                                                 CupertinoActionSheetAction(
@@ -146,7 +146,7 @@ class CartItems extends StatelessWidget {
                                                                     Navigator.pop(
                                                                         context);
                                                                   },
-                                                                  child: Text(
+                                                                  child: const Text(
                                                                       'Delete Item'),
                                                                 ),
                                                               ],
@@ -156,7 +156,8 @@ class CartItems extends StatelessWidget {
                                                                   Navigator.pop(
                                                                       context);
                                                                 },
-                                                                child: Text(
+                                                                child:
+                                                                    const Text(
                                                                   'Cancel',
                                                                   style: TextStyle(
                                                                       color: Colors
