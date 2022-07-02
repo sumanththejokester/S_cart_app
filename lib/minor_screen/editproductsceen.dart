@@ -94,6 +94,7 @@ class _EditProductState extends State<EditProduct> {
   }
 
   List<XFile>? imagesFileList = [];
+  // ignore: unused_field
   dynamic _pickedImageError;
 
   CollectionReference suppliers =
@@ -195,9 +196,9 @@ class _EditProductState extends State<EditProduct> {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    child: Text(
+                    child: const Text(
                       'Cancel',
-                      style: const TextStyle(fontSize: 15, color: Colors.white),
+                      style: TextStyle(fontSize: 15, color: Colors.white),
                     ),
                   )),
               Container(
@@ -210,16 +211,16 @@ class _EditProductState extends State<EditProduct> {
                     onPressed: () {
                       savechanges();
                     },
-                    child: Text(
+                    child: const Text(
                       'Save',
-                      style: const TextStyle(fontSize: 15, color: Colors.white),
+                      style: TextStyle(fontSize: 15, color: Colors.white),
                     ),
                   )),
             ],
           ),
           elevation: 0,
           backgroundColor: Colors.blueGrey[100],
-          leading: AppBarBackButton(),
+          leading: const AppBarBackButton(),
         ),
         body: SafeArea(
           child: SingleChildScrollView(
@@ -231,7 +232,7 @@ class _EditProductState extends State<EditProduct> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   ExpandablePanel(
-                    theme: ExpandableThemeData(hasIcon: false),
+                    theme: const ExpandableThemeData(hasIcon: false),
                     header: const Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Center(
@@ -282,7 +283,8 @@ class _EditProductState extends State<EditProduct> {
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 Padding(
-                                  padding: EdgeInsets.fromLTRB(8, 14, 8, 8),
+                                  padding:
+                                      const EdgeInsets.fromLTRB(8, 14, 8, 8),
                                   child: Container(
                                     height: MediaQuery.of(context).size.width *
                                         0.12,
@@ -398,7 +400,7 @@ class _EditProductState extends State<EditProduct> {
                                         },
                                         child: imagesFileList != null
                                             ? previewImages()
-                                            : Center(
+                                            : const Center(
                                                 child: Text(
                                                     'Pick Images of Product')),
                                       ))),
@@ -407,7 +409,8 @@ class _EditProductState extends State<EditProduct> {
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 Padding(
-                                  padding: EdgeInsets.fromLTRB(8, 14, 8, 8),
+                                  padding:
+                                      const EdgeInsets.fromLTRB(8, 14, 8, 8),
                                   child: Container(
                                     height: MediaQuery.of(context).size.width *
                                         0.18,

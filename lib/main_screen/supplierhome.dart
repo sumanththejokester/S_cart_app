@@ -48,18 +48,18 @@ class _SupplierHomeScreenState extends State<SupplierHomeScreen> {
               currentIndex: _SelectedIndex,
               items: [
                 const BottomNavigationBarItem(
-                  icon: const Icon(Icons.home),
+                  icon: Icon(Icons.home),
                   label: "HOME",
                 ),
                 const BottomNavigationBarItem(
-                    icon: const Icon(Icons.search), label: "CATEGORY"),
+                    icon: Icon(Icons.search), label: "CATEGORY"),
                 const BottomNavigationBarItem(
-                    icon: const Icon(Icons.shop), label: "STORES"),
+                    icon: Icon(Icons.shop), label: "STORES"),
                 BottomNavigationBarItem(
                     icon: Badge(
                         showBadge: snapshot.data!.docs.isEmpty ? false : true,
                         animationType: BadgeAnimationType.slide,
-                        badgeColor: Color.fromARGB(255, 152, 189, 205),
+                        badgeColor: const Color.fromARGB(255, 152, 189, 205),
                         badgeContent: Text(
                           snapshot.data!.docs.length.toString(),
                           style: TextStyle(

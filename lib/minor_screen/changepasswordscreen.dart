@@ -45,7 +45,7 @@ class _ChangePasswordState extends State<ChangePassword> {
       key: _scaffoldkey,
       child: Scaffold(
         appBar: AppBar(
-          leading: AppBarBackButton(),
+          leading: const AppBarBackButton(),
           title: Text(
             'Change Password',
             style: TextStyle(
@@ -94,7 +94,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                           hintText: 'Enter Your Email')),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
               Container(
@@ -109,15 +109,14 @@ class _ChangePasswordState extends State<ChangePassword> {
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
+                      children: const [
                         Icon(
                           Icons.lock_outline,
                           color: Colors.white,
                         ),
                         Text(
                           'Reset Password',
-                          style: const TextStyle(
-                              fontSize: 20, color: Colors.white),
+                          style: TextStyle(fontSize: 20, color: Colors.white),
                         ),
                       ],
                     ),
@@ -130,7 +129,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                             Image.asset('images/inapp/ForgotEmailNotify.png'),
                       ),
                     )
-                  : SizedBox(
+                  : const SizedBox(
                       height: 40,
                     ),
               const SizedBox(

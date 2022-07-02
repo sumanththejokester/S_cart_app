@@ -111,6 +111,7 @@ class _UploadProductState extends State<UploadProduct> {
   }
 
   List<XFile>? imagesFileList = [];
+  // ignore: unused_field
   dynamic _pickedImageError;
 
   CollectionReference suppliers =

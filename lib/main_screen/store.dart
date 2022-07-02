@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:multi_store_app/dashboard_componets/editbussinessscreen.dart';
 import 'package:multi_store_app/models/productmodels.dart';
-import 'package:multi_store_app/widgets/appbarwidgets.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_grid_view.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_tile.dart';
 
@@ -47,7 +46,7 @@ class _StoreState extends State<Store> {
               toolbarHeight: 120,
               elevation: 0,
               leading: IconButton(
-                icon: Icon(Icons.arrow_back_ios),
+                icon: const Icon(Icons.arrow_back_ios),
                 onPressed: () {
                   Navigator.pop(context);
                 },
@@ -66,7 +65,7 @@ class _StoreState extends State<Store> {
                     decoration: BoxDecoration(
                         border: Border.all(
                             width: 3,
-                            color: Color.fromARGB(255, 207, 216, 220)),
+                            color: const Color.fromARGB(255, 207, 216, 220)),
                         borderRadius: BorderRadius.circular(15)),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(12),
@@ -145,7 +144,7 @@ class _StoreState extends State<Store> {
                                     border: following == false
                                         ? null
                                         : Border.all(
-                                            color: Color.fromARGB(
+                                            color: const Color.fromARGB(
                                                 255, 207, 216, 220))),
                                 child: MaterialButton(
                                   onPressed: () {
@@ -176,7 +175,7 @@ class _StoreState extends State<Store> {
             ),
             body: Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 25,
                 ),
                 StreamBuilder<QuerySnapshot>(
@@ -227,7 +226,7 @@ class _StoreState extends State<Store> {
                     ? null
                     : FloatingActionButton(
                         backgroundColor: Colors.green,
-                        child: Icon(
+                        child: const Icon(
                           Icons.whatsapp_outlined,
                           color: Colors.white,
                           size: 30,
@@ -237,7 +236,7 @@ class _StoreState extends State<Store> {
           );
         }
 
-        return const Center(child: const CircularProgressIndicator());
+        return const Center(child: CircularProgressIndicator());
       },
     );
   }

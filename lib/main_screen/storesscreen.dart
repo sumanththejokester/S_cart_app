@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:multi_store_app/main_screen/store.dart';
 import 'package:multi_store_app/widgets/appbarwidgets.dart';
@@ -73,7 +72,7 @@ class StoresScreen extends StatelessWidget {
                       SizedBox(
                         child: Text(
                           snapshot.data!.docs[index]['storename'].toUpperCase(),
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontFamily: 'Caveat',
                               fontSize: 24,
                               letterSpacing: 1.5,
@@ -83,12 +82,12 @@ class StoresScreen extends StatelessWidget {
                     ],
                   );
                 }),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     mainAxisSpacing: 5,
                     crossAxisSpacing: 5,
                     crossAxisCount: 1));
           }
-          return Text('no stores');
+          return const Text('no stores');
         },
       ),
     );
