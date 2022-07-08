@@ -2,8 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
+import 'package:multi_store_app/auth/forgotpasswordscreen.dart';
+import 'package:multi_store_app/custumer_profile_components/addaddressscreen.dart';
 import 'package:multi_store_app/custumer_profile_components/editprofilescreen.dart';
 import 'package:multi_store_app/main_screen/cartscreen.dart';
+import 'package:multi_store_app/minor_screen/addressbook.dart';
 import 'package:multi_store_app/minor_screen/changepasswordscreen.dart';
 import 'package:multi_store_app/widgets/appbarwidgets.dart';
 
@@ -265,10 +268,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 ),
                               ),
                               ListTile(
+                                onTap: () {
+                                  FirebaseAuth.instance.currentUser!.isAnonymous
+                                      ? null
+                                      : Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  AddressBook()));
+                                },
                                 title: const Text('Address'),
-                                subtitle: data['address'] == ''
-                                    ? const Text('example : India ')
-                                    : Text(data['address']),
+                                subtitle: Text(userAddress(data))
+                                // data['address'] == ''
+                                //    ? const Text('example : India ')
+                                //    : Text(data['address'])
+                                ,
                                 leading: const Icon(Icons.house),
                               ),
                             ],
@@ -288,13 +302,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             children: [
                               InkWell(
                                 onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              EditProfileScreen(
-                                                data: data,
-                                              )));
+                                  FirebaseAuth.instance.currentUser!.isAnonymous
+                                      ? null
+                                      : Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  EditProfileScreen(
+                                                    data: data,
+                                                  )));
                                 },
                                 child: const ListTile(
                                   title: Text('Edit Profile'),
@@ -318,7 +334,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             const ChangePassword(),
                                       ));
                                 },
-                                child: const ListTile(
+                                child: ListTile(
+                                  onTap: () {
+                                    FirebaseAuth
+                                            .instance.currentUser!.isAnonymous
+                                        ? null
+                                        : Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const resetPassword()));
+                                  },
                                   title: Text('Change Password'),
                                   subtitle: Text(''),
                                   leading: Icon(Icons.lock),
@@ -373,6 +399,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
         );
       },
     );
+  }
+
+  String userAddress(dynamic data) {
+    if (FirebaseAuth.instance.currentUser!.isAnonymous == true) {
+      return 'Example Address: India';
+    } else if (FirebaseAuth.instance.currentUser!.isAnonymous == false &&
+        data['address'] == '') {
+      return 'Set Address !';
+    }
+    return data['address'];
   }
 }
 

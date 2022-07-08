@@ -73,7 +73,7 @@ class StoresScreen extends StatelessWidget {
                         child: Text(
                           snapshot.data!.docs[index]['storename'].toUpperCase(),
                           style: const TextStyle(
-                              fontFamily: 'Caveat',
+                              fontFamily: 'Acme',
                               fontSize: 24,
                               letterSpacing: 1.5,
                               fontWeight: FontWeight.w600),

@@ -92,9 +92,9 @@ class _StoreState extends State<Store> {
                               data['storename'].toUpperCase(),
                               style: TextStyle(
                                   color: Colors.blueGrey[900],
-                                  fontFamily: 'Caveat',
+                                  fontFamily: 'Acme',
                                   fontSize: 24,
-                                  fontWeight: FontWeight.bold),
+                                  fontWeight: FontWeight.w600),
                             ),
                           ),
                         ),

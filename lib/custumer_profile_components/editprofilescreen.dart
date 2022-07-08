@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:multi_store_app/minor_screen/addressbook.dart';
 import 'package:multi_store_app/widgets/appbarwidgets.dart';
 import 'package:multi_store_app/widgets/authscreenwidgets.dart';
 import 'package:multi_store_app/widgets/button.dart';
@@ -26,7 +27,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   late String name;
   bool processing = false;
   late String phone;
-  late String address;
   @override
   Widget build(BuildContext context) {
     return ScaffoldMessenger(
@@ -167,25 +167,24 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 28.0, vertical: 8),
-                      child: TextFormField(
-                        initialValue: widget.data['address'],
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'Enter Valid Adress';
-                          }
-                          return null;
-                        },
-                        onSaved: (value) {
-                          address = value!;
-                        },
-                        decoration: textformdecoration.copyWith(
-                          labelText: 'Address',
-                          hintText: 'Edit Address',
-                        ),
-                      ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => AddressBook()));
+                      },
+                      child: const Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 28.0, vertical: 8),
+                          child: Text(
+                            '👉 Add Address / Change Default Address',
+                            style: TextStyle(
+                                fontFamily: 'Caveat',
+                                fontSize: 17,
+                                letterSpacing: 1.5,
+                                fontWeight: FontWeight.w600),
+                          )),
                     ),
                     const SizedBox(
                       height: 25,
@@ -257,7 +256,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         await ref.putFile(File(imageFile!.path));
 
         logo = await ref.getDownloadURL();
-      // ignore: empty_catches
+        // ignore: empty_catches
       } catch (e) {}
     } else {
       logo = widget.data['profileimage'];
@@ -273,7 +272,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         'name': name,
         'phone': phone,
         'profileimage': logo,
-        'address': address
       });
     }).whenComplete(() => Navigator.pop(context));
   }
