@@ -94,7 +94,13 @@ class _AddressBookState extends State<AddressBook> {
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),
-
+                            //    boxShadow: [
+                            //    BoxShadow(
+                            //    color: Colors.red.withOpacity(0.4),
+                            //  spreadRadius: 2,
+                            //blurRadius: 8,
+                            //),
+                            //],
                             //color: Colors.blueGrey[100],
                             gradient: LinearGradient(colors: [
                               Colors.blueGrey.withOpacity(0.4),
@@ -108,7 +114,7 @@ class _AddressBookState extends State<AddressBook> {
                           width: MediaQuery.of(context).size.width * 0.9,
                           child: ListTile(
                             trailing: custumer['default'] == true
-                                ? Icon(Icons.home)
+                                ? Icon(Icons.home_sharp)
                                 : null,
                             title: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -121,12 +127,16 @@ class _AddressBookState extends State<AddressBook> {
                                       '${custumer['firstname']} ${custumer['lastname']}'
                                           .toUpperCase(),
                                       style: TextStyle(
-                                          fontWeight: FontWeight.w600),
+                                          fontWeight: FontWeight.w600,
+                                          color:
+                                              Color.fromARGB(255, 14, 55, 15)),
                                     ),
                                     Text(
                                       custumer['phone'],
                                       style: TextStyle(
-                                          fontWeight: FontWeight.w400),
+                                          fontWeight: FontWeight.w400,
+                                          color:
+                                              Color.fromARGB(255, 112, 19, 12)),
                                     )
                                   ],
                                 ),
