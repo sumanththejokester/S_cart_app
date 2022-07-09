@@ -10,9 +10,15 @@ import 'package:sn_progress_dialog/progress_dialog.dart';
 import 'package:uuid/uuid.dart';
 
 class PaymentScreen extends StatefulWidget {
-  const PaymentScreen({
-    Key? key,
-  }) : super(key: key);
+  final String name;
+  final String phone;
+  final String address;
+  const PaymentScreen(
+      {Key? key,
+      required this.name,
+      required this.phone,
+      required this.address})
+      : super(key: key);
 
   @override
   State<PaymentScreen> createState() => _PaymentScreenState();
@@ -336,12 +342,11 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                                           .doc(orderid)
                                                           .set({
                                                         'cid': data['cid'],
-                                                        'custname':
-                                                            data['name'],
+                                                        'custname': widget.name,
                                                         'email': data['email'],
                                                         'address':
-                                                            data['address'],
-                                                        'phone': data['phone'],
+                                                            widget.address,
+                                                        'phone': widget.phone,
                                                         'profileimage': data[
                                                             'profileimage'],
                                                         'sid': item.suppId,

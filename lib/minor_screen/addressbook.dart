@@ -88,6 +88,18 @@ class _AddressBookState extends State<AddressBook> {
                           transaction
                               .update(documentReference, {'default': true});
                         });
+                        await FirebaseFirestore.instance
+                            .runTransaction((transaction) async {
+                          DocumentReference documentReference =
+                              FirebaseFirestore.instance
+                                  .collection('custumers')
+                                  .doc(FirebaseAuth.instance.currentUser!.uid);
+
+                          transaction.update(documentReference, {
+                            'address':
+                                '${custumer['country']} , ${custumer['state']} , ${custumer['city']} , ${custumer['faddress']}'
+                          });
+                        });
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
