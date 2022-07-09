@@ -172,7 +172,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => AddressBook()));
+                                builder: (context) => const AddressBook()));
                       },
                       child: const Padding(
                           padding: EdgeInsets.symmetric(

@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
 import 'package:multi_store_app/auth/forgotpasswordscreen.dart';
-import 'package:multi_store_app/custumer_profile_components/addaddressscreen.dart';
 import 'package:multi_store_app/custumer_profile_components/editprofilescreen.dart';
 import 'package:multi_store_app/main_screen/cartscreen.dart';
 import 'package:multi_store_app/minor_screen/addressbook.dart';
@@ -275,7 +274,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  AddressBook()));
+                                                  const AddressBook()));
                                 },
                                 title: const Text('Address'),
                                 subtitle: Text(userAddress(data))
@@ -345,9 +344,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 builder: (context) =>
                                                     const resetPassword()));
                                   },
-                                  title: Text('Change Password'),
-                                  subtitle: Text(''),
-                                  leading: Icon(Icons.lock),
+                                  title: const Text('Change Password'),
+                                  subtitle: const Text(''),
+                                  leading: const Icon(Icons.lock),
                                 ),
                               ),
                               const Padding(

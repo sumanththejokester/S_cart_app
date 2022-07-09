@@ -2,8 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:country_state_city_picker/country_state_city_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:multi_store_app/widgets/appbarwidgets.dart';
 import 'package:multi_store_app/widgets/authscreenwidgets.dart';
 import 'package:multi_store_app/widgets/button.dart';
@@ -35,10 +33,10 @@ class _AddAddressState extends State<AddAddress> {
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          title: AppBarTitle(
+          title: const AppBarTitle(
             title: 'Add Address',
           ),
-          leading: AppBarBackButton(),
+          leading: const AppBarBackButton(),
           elevation: 0,
           backgroundColor: Colors.white,
         ),
@@ -51,7 +49,7 @@ class _AddAddressState extends State<AddAddress> {
               //color: Colors.blueGrey[100],
               gradient: LinearGradient(colors: [
                 Colors.blueGrey.withOpacity(0.4),
-                Color.fromARGB(255, 15, 113, 162).withOpacity(0.4),
+                const Color.fromARGB(255, 15, 113, 162).withOpacity(0.4),
               ]),
               border: Border.all(color: const Color.fromARGB(255, 38, 50, 56)),
             ),
@@ -124,12 +122,13 @@ class _AddAddressState extends State<AddAddress> {
                               borderRadius: BorderRadius.circular(15),
                               //color: Colors.blueGrey[100],
                               gradient: LinearGradient(colors: [
-                                Color.fromARGB(255, 15, 113, 162)
+                                const Color.fromARGB(255, 15, 113, 162)
                                     .withOpacity(0.2),
                                 Colors.blueGrey.withOpacity(0.4),
                               ]),
                               border: Border.all(
-                                  color: Color.fromARGB(255, 111, 158, 173)),
+                                  color:
+                                      const Color.fromARGB(255, 111, 158, 173)),
                             ),
                             height: MediaQuery.of(context).size.height * 0.222,
                             width: MediaQuery.of(context).size.width * 0.87,
@@ -195,7 +194,7 @@ class _AddAddressState extends State<AddAddress> {
                                       .doc(FirebaseAuth
                                           .instance.currentUser!.uid)
                                       .collection('address');
-                              var addressId = Uuid().v4();
+                              var addressId = const Uuid().v4();
                               await addressReference.doc(addressId).set({
                                 'addressid': addressId,
                                 'firstname': firstname,

@@ -44,8 +44,8 @@ class _PlaceOrderScreenState extends State<PlaceOrderScreen> {
           }
 
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Material(
-                child: const Center(child: CircularProgressIndicator()));
+            return const Material(
+                child: Center(child: CircularProgressIndicator()));
           }
           /* if (snapshot.data!.docs.isEmpty) {
             return const Center(
@@ -85,7 +85,8 @@ class _PlaceOrderScreenState extends State<PlaceOrderScreen> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => AddAddress()));
+                                        builder: (context) =>
+                                            const AddAddress()));
                               },
                               child: Container(
                                 height: 80,
@@ -94,8 +95,8 @@ class _PlaceOrderScreenState extends State<PlaceOrderScreen> {
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(15),
                                 ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                child: const Padding(
+                                  padding: EdgeInsets.all(8.0),
                                   child: Center(
                                     child: Text(
                                       'No Saved Address! \n      Add Address',
@@ -140,7 +141,7 @@ class _PlaceOrderScreenState extends State<PlaceOrderScreen> {
                                                 context,
                                                 MaterialPageRoute(
                                                     builder: (context) =>
-                                                        AddressBook()));
+                                                        const AddressBook()));
                                           },
                                           child: ListTile(
                                             title: Column(
@@ -156,7 +157,7 @@ class _PlaceOrderScreenState extends State<PlaceOrderScreen> {
                                                     Text(
                                                       '${custumer['firstname']} ${custumer['lastname']}'
                                                           .toUpperCase(),
-                                                      style: TextStyle(
+                                                      style: const TextStyle(
                                                           fontWeight:
                                                               FontWeight.w600,
                                                           color: Color.fromARGB(
@@ -164,7 +165,7 @@ class _PlaceOrderScreenState extends State<PlaceOrderScreen> {
                                                     ),
                                                     Text(
                                                       custumer['phone'],
-                                                      style: TextStyle(
+                                                      style: const TextStyle(
                                                           fontWeight:
                                                               FontWeight.w400,
                                                           color: Color.fromARGB(

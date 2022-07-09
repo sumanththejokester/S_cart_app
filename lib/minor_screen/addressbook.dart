@@ -5,8 +5,6 @@ import 'package:multi_store_app/custumer_profile_components/addaddressscreen.dar
 import 'package:multi_store_app/widgets/appbarwidgets.dart';
 import 'package:multi_store_app/widgets/button.dart';
 import 'package:sn_progress_dialog/progress_dialog.dart';
-import 'package:staggered_grid_view_flutter/widgets/staggered_grid_view.dart';
-import 'package:staggered_grid_view_flutter/widgets/staggered_tile.dart';
 
 class AddressBook extends StatefulWidget {
   const AddressBook({Key? key}) : super(key: key);
@@ -72,9 +70,9 @@ class _AddressBookState extends State<AddressBook> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: AppBarTitle(title: 'Address Book'),
+        title: const AppBarTitle(title: 'Address Book'),
         elevation: 0,
-        leading: AppBarBackButton(),
+        leading: const AppBarBackButton(),
         backgroundColor: Colors.white,
       ),
       body: SafeArea(
@@ -90,7 +88,7 @@ class _AddressBookState extends State<AddressBook> {
               }
 
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return Material(
+                return const Material(
                     child: Center(child: CircularProgressIndicator()));
               }
               if (snapshot.data!.docs.isEmpty) {
@@ -131,7 +129,7 @@ class _AddressBookState extends State<AddressBook> {
                           }
                           await defaultAddressTrue(custumer).whenComplete(
                               () async => await updateProfile(custumer));
-                          Future.delayed(Duration(microseconds: 100))
+                          Future.delayed(const Duration(microseconds: 100))
                               .whenComplete(() => Navigator.pop(context));
                         },
                         child: Padding(
@@ -149,13 +147,13 @@ class _AddressBookState extends State<AddressBook> {
                               //color: Colors.blueGrey[100],
                               gradient: custumer['default'] == true
                                   ? LinearGradient(colors: [
-                                      Color.fromARGB(255, 15, 113, 162)
+                                      const Color.fromARGB(255, 15, 113, 162)
                                           .withOpacity(0.4),
                                       Colors.blueGrey.withOpacity(0.4),
                                     ])
                                   : LinearGradient(colors: [
                                       Colors.blueGrey.withOpacity(0.4),
-                                      Color.fromARGB(255, 15, 113, 162)
+                                      const Color.fromARGB(255, 15, 113, 162)
                                           .withOpacity(0.4),
                                     ]),
                               border: Border.all(
@@ -165,7 +163,7 @@ class _AddressBookState extends State<AddressBook> {
                             width: MediaQuery.of(context).size.width * 0.9,
                             child: ListTile(
                               trailing: custumer['default'] == true
-                                  ? Icon(Icons.home_sharp)
+                                  ? const Icon(Icons.home_sharp)
                                   : null,
                               title: Column(
                                 mainAxisAlignment:
@@ -179,14 +177,14 @@ class _AddressBookState extends State<AddressBook> {
                                       Text(
                                         '${custumer['firstname']} ${custumer['lastname']}'
                                             .toUpperCase(),
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             fontWeight: FontWeight.w600,
                                             color: Color.fromARGB(
                                                 255, 14, 55, 15)),
                                       ),
                                       Text(
                                         custumer['phone'],
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             fontWeight: FontWeight.w400,
                                             color: Color.fromARGB(
                                                 255, 112, 19, 12)),
@@ -218,8 +216,10 @@ class _AddressBookState extends State<AddressBook> {
             child: Button(
                 buttonlabel: 'Add New Address',
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => AddAddress()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const AddAddress()));
                 },
                 buttonwidth: 0.7),
           )
